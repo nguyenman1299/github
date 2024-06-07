@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cùng code dạo</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+ul,ol{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+#right-boo, #left-boo{
+    position: relative;
+    left: 10px;
+    top: -10px;
+    width: 140px;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+#status{
+    font-size: 20px;
+    color: blueviolet;
+}
+    </style>
+</head>
+<body>
+    <div>
+        <img src="./a.jpg" alt="">
+    </div>
+    <div>
+        <img src="./b.jpg" alt="" id="left-boo"><img src="./c.jpg" alt="" id ="right-boo">
+    </div>
+    <div>
+        <img src="./d.jpg" alt="">
+    </div>
+    <span id="status">Nằm bất động</span>
+
+    <script>
+        function playSound(){
+            const audio = new Audio('boo.mp3');
+            audio.play();
+        }
+
+        const rightBoo = document.querySelector("#right-boo");
+        
+        const status = document.querySelector('#status');
+
+        rightBoo.onclick = () => {
+            playSound();
+            rightBoo.style.top = '-50px';
+            setTimeout(()=>{
+                rightBoo.style.top = '-10px';
+            }, 1000);
+        }
+
+        rightBoo.onmouseover = () =>{
+            rightBoo.style.width = '200px';
+            status.innerText = "Chạm";
+        }
+
+        rightBoo.onmouseleave = () =>{
+            rightBoo.style.width = '140px';
+            status.innerText = "Bỏ";
+        }
+    </script>
+</body>
+</html>
